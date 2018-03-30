@@ -8,7 +8,6 @@ public class trab1 {
 	public static void main(String[] args) {
 		
 		int opcao;
-		
 		Aluno[] alunos = new Aluno[10];
 		Disciplina[] disciplinas = new Disciplina[10];
  		
