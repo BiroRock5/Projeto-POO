@@ -1,0 +1,149 @@
+package atv;
+import java.util.Scanner;
+
+public class mtacoisa {
+	
+	static Scanner scn = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		int opcao;
+		
+		Aluno[] alunos = new Aluno[100];
+		
+//		for (int i = 0; i <= alunos.length; i++) {
+//			
+//			alunos[i] = new Aluno();
+//			
+//			System.out.println("Informe o nome do aluno " +i);
+//			
+//			alunos[i].nome = scn.next();
+//			
+//			System.out.println("Informe o número do aluno " +i);
+//			
+//			alunos[i].numero = scn.nextInt();
+//			
+//			
+//			for(int j = 0;j < alunos[i].notas.length;j++) {
+//				
+//				System.out.println("Informe a nota " +j+ " do aluno " +i);
+//				
+//				alunos[i].notas[j] = scn.nextDouble();
+//				
+//			}
+//		}
+		
+		do {
+			
+			System.out.println("0- SAIR");
+			
+			System.out.println("1- Cadastrar Aluno");
+			
+			System.out.println("2- Calcular 3 maiores médias");
+			
+			System.out.println("3- Listar todos alunos");
+			
+			opcao = scn.nextInt();
+			
+			switch (opcao) {
+			
+			case 1:
+				
+				Aluno a = lerAluno();
+					if (inserir(a, alunos)){
+						System.out.println("Sucesso");
+					}else {
+						System.out.println("Falha");
+					}
+		
+				break;
+				
+			case 2:
+				
+				break;
+				
+			case 3:
+				listar(alunos);
+				
+				break;
+			
+			default:
+				
+				break;
+				
+			}
+			
+		}while(opcao != 0);
+		
+		scn.close();
+		
+		
+		
+	}
+	
+	static void listar(Aluno[] alunos) {
+		System.out.println("-- Listagem de alunos --");
+		System.out.println("Num\tAluno\tNotas");
+			for (int i = 0; i < alunos.length; i++ ) {
+				if (alunos[i] != null)
+					System.out.println(alunos[i].numero + "\t" + alunos[i].nome);
+			}
+		
+	}
+	
+	//Leitura de um aluno
+	
+	static Aluno lerAluno() {
+		
+		Aluno a = new Aluno();
+		
+		System.out.println("Cadastra Aluno");
+		
+		System.out.println("Numero: ");
+		
+		a.numero = scn.nextInt();
+		
+		System.out.println("Nome: ");
+		
+		a.nome = scn.next();
+		
+	    for (int i = 0;i < a.notas.length;i++) {
+	    	
+			System.out.println("Nota: ");
+			
+			a.notas[i] = scn.nextDouble();
+			
+			
+	    }
+	    
+		return a;
+		
+		
+	}
+	
+	static boolean inserir(Aluno a, Aluno[] alunos) {
+		for (int i = 0; i < alunos.length; i++) {
+			if (alunos[i] == null) {
+				alunos[i] = a;
+						return true;
+			}
+		}
+		return false;
+	}
+	
+
+}
+
+
+//Registro Aluno
+
+class Aluno {	
+	
+	int numero;
+	
+	String nome;
+	
+	double[] notas = new double[10];	
+	
+	
+}
